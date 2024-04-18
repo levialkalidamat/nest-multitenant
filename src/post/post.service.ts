@@ -18,7 +18,7 @@ export class PostService {
   async create(createPostDto: CreatePostDto, userId: string) {
     console.log(userId);
     const findUser = await this.userModel.findById(userId);
-    console.log(findUser);
+    //console.log(findUser);
     const data = Object.assign(createPostDto, { user: userId });
     const newPost = await this.postModel.create(data); // const newPost = await this.postModel.create(createPostDto); //
 

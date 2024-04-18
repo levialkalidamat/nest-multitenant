@@ -13,10 +13,10 @@ import { TenantMiddleware } from 'src/middlewares/tenants.middleware';
   imports: [
     JwtModule.register({}),
     MongooseModule.forFeature([
-      {
+      /* {
         name: User.name,
         schema: UserSchema,
-      },
+      }, */
       /* {
         name: Post.name,
         schema: PostSchema,

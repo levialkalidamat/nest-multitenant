@@ -1,4 +1,4 @@
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -14,11 +14,16 @@ import { TenantsModule } from './tenants/tenants.module';
       cache: true,
       isGlobal: true,
     }),
-    MongooseModule.forRoot(process.env.DATABASE_URL),
+    //MongooseModule.forRoot(process.env.DATABASE_URL),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (config) => ({
+        uri: config.get('DATABASE_URL'),
+      }),
+      inject: [ConfigService],
+    }),
     AuthModule,
-
     PostModule,
-
     TenantsModule,
   ],
   controllers: [AppController],

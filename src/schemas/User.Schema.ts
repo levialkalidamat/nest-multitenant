@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 import { Post } from './Post.Schema';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
